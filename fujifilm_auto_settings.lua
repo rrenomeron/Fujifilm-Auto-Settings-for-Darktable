@@ -123,9 +123,10 @@ local function exiv2(RAF_filename)
     local output = io.popen(command)
     local exifdata = {}
     for line in output:lines("l") do
-        local key, value = line:match("^%s*(%g-)%s+%g+%s+(%g.-)%s*$")
+        local key, value = line:match("^%s*(%g-)%s+%g+%s+%g+%s+(%g.-)%s*$")
         if key ~= nil and value ~= nil then
             exifdata[key] = value
+            dt.print_log("[fujifilm_auto_settings] adding exif tag " .. key .. " with value " .. value)
         end
     end
     output:close()
@@ -267,7 +268,7 @@ dt.register_event("fujifilm_auto_settings", "post-import-image", detect_auto_set
 
 dt.register_event("fujifilm_auto_settings", "shortcut", detect_auto_settings_multi, "fujifilm_auto_settings")
 
-dt.print_log("[fujifilm_auto_settings] loaded")
+dt.print_log("[fujifilm_auto_settings] loaded (exiv2 version)")
 
 script_data.destroy = destroy
 
