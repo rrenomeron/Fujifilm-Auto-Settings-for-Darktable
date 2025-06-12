@@ -237,13 +237,17 @@ local function detect_auto_settings(event, image)
     -- Check if it's a color film mode
     if raw_filmmode then
         local style_map = {
-            ["Provia"] = "provia",
-            ["Astia"] = "astia",
-            ["Classic Chrome"] = "classic_chrome",
-            ["Eterna"] = "eterna",
-            ["Pro Neg. Hi"] = "pro_neg_high",
-            ["Pro Neg. Std"] = "pro_neg_standard",
-            ["Velvia"] = "velvia",
+            ["Provia"] = "Fuji/Provia",
+            ["Astia"] = "Fuji/Astia",
+            ["Classic Chrome"] = "Fuji/Classic Chrome",
+            ["Eterna"] = "Fuji/Eterna",
+            ["Pro Neg. Hi"] = "Fuji/Pro Neg High",
+            ["Pro Neg. Std"] = "Fuji/Pro Neg Std",
+            ["Velvia"] = "Velvia",
+            ["Classic Negative"] = "Fuji/Classic Negative",
+            ["ETERNA Bleach Bypass"] = "Fuji/Eterna Bleach Bypass",
+            ["NOSTALGIC Neg"] = "Fuji/Nostagic Neg"
+            ["REALA ACE"] = "Fuji/Reala Ace"
         }
         for key, value in pairs(style_map) do
             if string.find(raw_filmmode, key) then
